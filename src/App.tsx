@@ -6,10 +6,11 @@ function App() {
   const [value, setValue] = useState("")
 
   const onSubmit = () => { 
+    if(value.length == 0) return alert('Ingrese un valor')
     if (duiValidator(value)) {
-      console.log('es true');
+      alert('El DUI ingresado es válido')
     } else { 
-      console.log('no es true');
+      alert('EL DUI ingresado no es válido')
     }
   }
 
@@ -25,6 +26,7 @@ function App() {
            } }
         >
           <input
+            data-testid='input-dui'
             placeholder='000000000'
             className='rounded p-2 w-full'
             value={value}
@@ -32,7 +34,7 @@ function App() {
               setValue(e.target.value)
             }}
           />
-          <button className='bg-blue-700 text-white w-auto py-2 px-3 rounded'>Validar</button>
+          <button data-testid='button' className='bg-blue-700 text-white w-auto py-2 px-3 rounded'>Validar</button>
         </form>
       </div>
     </div>
